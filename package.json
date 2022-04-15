@@ -1,6 +1,6 @@
 {
-    "name": "Compressor",
-    "version": "1.1.1",
+    "name": "compressor",
+    "version": "1.1.0",
     "description": "Compresseur d'images",
     "main": "index.js",
     "scripts": {
