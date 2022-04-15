@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Compressor</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>Compressor</h1>
+        <form id="compressorForm">
+            <div id="dropZone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+                <p>Glissez-déposez une ou plusieurs images ici.</p>
+            </div>
+            <p class="my-30">
+                <label for="quality">Choisissez la qualité souhaitée (0-100) : </label><br>
+                <input class="mt-10" type="number" step="any" min="0" max="100" id="quality">
+            </p>
+            <div><button type="submit" class="saveButton">Compresser !</button></div>
+        </form>
+
+        <h2>Informations sur la compression</h2>
+        <p id="numberFile">Nombre de fichiers :</p>
+        <p id="algorithm">Algorithme utilisé :</p>
+        <p id="inputPath">Chemin du fichier d'entrée :</p>
+        <p id="outputPath">Chemin du fichier de sortie :</p>
+        <p id="inputSize">Taille du fichier avant compression :</p>
+        <p id="outputSize">Taille du fichier après compression :</p>
+        <p id="percentSizeReduction">Réduction de la taille :</p>
+    </div>
+
+    <script src="compression.js"></script>
+</body>
+
+</html>

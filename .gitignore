@@ -1,0 +1,4 @@
+log
+*.log
+release-builds
+node_modules
