@@ -100,3 +100,14 @@ button.saveButton:active {
 #lang:hover {
     background-color: rgb(228, 228, 228);
 }
+
+
+/* Credits */
+
+#credits {
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 10pt;
+    text-align: center;
+}

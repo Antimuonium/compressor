@@ -42,6 +42,10 @@ const trad = {
     percentSizeReductionText: {
         fr: "Réduction de la taille : ",
         en: "Size reduction: "
+    },
+    creditsText: {
+        fr: "Créé par <a href=\"https://www.antimuonium.com\">Antimuonium</a>.<br>Code disponible sur <a href=\"https://github.com/Antimuonium/compressor\">GitHub</a>.",
+        en: "Created by <a href=\"https://www.antimuonium.com\">Antimuonium</a>.<br>Code available on <a href=\"https://github.com/Antimuonium/compressor\">GitHub</a>."
     }
 };
 
@@ -49,6 +53,6 @@ const trad = {
 document.getElementById("lang").addEventListener("change", () => {
     let language = document.getElementById("lang").value;
     for (let att of Object.keys(trad)) {
-        document.getElementById(att).textContent = trad[att][language];
+        document.getElementById(att).innerHTML = trad[att][language];
     }
 });
