@@ -121,13 +121,16 @@ function compressImage(e) {
         }
 
         // Ajout des informations dans l'HTML
-        document.getElementById("numberFile").innerHTML = "Nombre de fichiers : " + numberFile;
-        document.getElementById("algorithm").innerHTML = "Algorithme" + (numberFile >= 2 ? "s" : "") + " utilisé" + (numberFile >= 2 ? "s" : "") + " : " + [...new Set(algorithms)].join(", ");
-        document.getElementById("inputPath").innerHTML = (numberFile >= 2 ? "<br>" : "") + "Chemin" + (numberFile >= 2 ? "s des" : " du") + " fichier" + (numberFile >= 2 ? "s" : "") + " d'entrée : " + inputPaths.join("<br>");
-        document.getElementById("outputPath").innerHTML = (numberFile >= 2 ? "<br>" : "") + "Chemin" + (numberFile >= 2 ? "s des" : " du") + " fichier" + (numberFile >= 2 ? "s" : "") + " de sortie : " + outputPaths.join("<br>");
-        document.getElementById("inputSize").innerHTML = "Taille " + (numberFile >= 2 ? "totale des" : "du") + " fichier" + (numberFile >= 2 ? "s" : "") + " avant compression : <span class=\"bold\">" + formatBytes(inputSizes.reduce((partialSum, a) => partialSum + a, 0), 2) + "</span>"; // somme des tailles
-        document.getElementById("outputSize").innerHTML = "Taille " + (numberFile >= 2 ? "totale des" : "du") + " fichier" + (numberFile >= 2 ? "s" : "") + " après compression : <span class=\"bold\">" + formatBytes(outputSizes.reduce((partialSum, a) => partialSum + a, 0), 2) + "</span>"; // somme des tailles
-        document.getElementById("percentSizeReduction").innerHTML = "Réduction de la taille : <span class=\"important\">" + formatNumber(Math.abs((outputSizes.reduce((partialSum, a) => partialSum + a, 0) - inputSizes.reduce((partialSum, a) => partialSum + a, 0)) / inputSizes.reduce((partialSum, a) => partialSum + a, 0)) * 100, 2) + " %</span>";
+        document.getElementById("numberFile").innerHTML = numberFile;
+        document.getElementById("algorithm").innerHTML = [...new Set(algorithms)].join(", ");
+        document.getElementById("inputPath").innerHTML = (numberFile >= 2 ? "<br>" : "") + inputPaths.join("<br>");
+        document.getElementById("outputPath").innerHTML = (numberFile >= 2 ? "<br>" : "") + outputPaths.join("<br>");
+        document.getElementById("inputSize").className = "bold";
+        document.getElementById("inputSize").innerHTML = formatBytes(inputSizes.reduce((partialSum, a) => partialSum + a, 0), 2); // somme des tailles
+        document.getElementById("outputSize").className = "bold";
+        document.getElementById("outputSize").innerHTML = formatBytes(outputSizes.reduce((partialSum, a) => partialSum + a, 0), 2); // somme des tailles
+        document.getElementById("percentSizeReduction").className = "important";
+        document.getElementById("percentSizeReduction").innerHTML = formatNumber(Math.abs((outputSizes.reduce((partialSum, a) => partialSum + a, 0) - inputSizes.reduce((partialSum, a) => partialSum + a, 0)) / inputSizes.reduce((partialSum, a) => partialSum + a, 0)) * 100, 2) + " %";
 
         // Vidage de la zone de drag & drop
         imagePaths = [];

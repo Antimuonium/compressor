@@ -10,28 +10,36 @@
 
 <body>
     <div id="container">
+        <div class="langContainer">
+            <select name="lang" id="lang">
+                <option value="fr">Français</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+
         <h1>Compressor</h1>
         <form id="compressorForm">
             <div id="dropZone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
-                <p>Glissez-déposez une ou plusieurs images ici.</p>
+                <p id="dropZoneText">Glissez-déposez une ou plusieurs images ici.</p>
             </div>
             <p class="my-30">
-                <label for="quality">Choisissez la qualité souhaitée (0-100) : </label><br>
+                <label id="qualityText" for="quality">Choisissez la qualité souhaitée (0-100) : </label><br>
                 <input class="mt-10" type="number" step="any" min="0" max="100" id="quality">
             </p>
-            <div><button type="submit" class="saveButton">Compresser !</button></div>
+            <div><button id="compressText" type="submit" class="saveButton">Compresser !</button></div>
         </form>
 
-        <h2>Informations sur la compression</h2>
-        <p id="numberFile">Nombre de fichiers :</p>
-        <p id="algorithm">Algorithme utilisé :</p>
-        <p id="inputPath">Chemin du fichier d'entrée :</p>
-        <p id="outputPath">Chemin du fichier de sortie :</p>
-        <p id="inputSize">Taille du fichier avant compression :</p>
-        <p id="outputSize">Taille du fichier après compression :</p>
-        <p id="percentSizeReduction">Réduction de la taille :</p>
+        <h2 id="statText">Informations sur la compression</h2>
+        <p><span id="numberFileText">Nombre de fichiers : </span><span id="numberFile"></span></p>
+        <p><span id="algorithmText">Algorithme utilisé : </span><span id="algorithm"></span></p>
+        <p><span id="inputPathText">Chemin du fichier d'entrée : </span><span id="inputPath"></span></p>
+        <p><span id="outputPathText">Chemin du fichier de sortie : </span><span id="outputPath"></span></p>
+        <p><span id="inputSizeText">Taille du fichier avant compression : </span><span id="inputSize"></span></p>
+        <p><span id="outputSizeText">Taille du fichier après compression : </span><span id="outputSize"></span></p>
+        <p><span id="percentSizeReductionText">Réduction de la taille : </span><span id="percentSizeReduction"></span></p>
     </div>
 
+    <script src="page.js"></script>
     <script src="compression.js"></script>
 </body>
 
