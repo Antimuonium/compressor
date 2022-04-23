@@ -22,7 +22,7 @@ function formatBytes(bytes, tooltip = true, decimals = 2) {
 }
 
 /**
- * Renvoie un nombre formaté (sans unité)
+ * Return a formatted number (without unit)
  * @param {Number} number 
  * @param {Number} decimals Nombre de chiffres après la virgule
  * @returns {String}
@@ -54,6 +54,25 @@ function dropHandler(ev) {
         // Use DataTransferItemList interface to access the file(s)
         for (var i = 0; i < ev.dataTransfer.files.length; i++) {
             imagePaths.push(ev.dataTransfer.files[i].path);
+        }
+
+        // If the file type is not allowed
+        const allowedExtensions = ["jpg", "jpeg", "png", "svg", "gif"];
+        const qualityExtensions = ["jpg", "jpeg", "png"];
+        document.getElementById("errorDragDrop").innerHTML = "";
+
+        for (var i = 0; i < imagePaths.length; i++) {
+            let extension = imagePaths[i].split(".")[imagePaths[i].split(".").length - 1];
+            extension = extension.toLowerCase();
+
+            if (!allowedExtensions.includes(extension)) {
+                document.getElementById("errorDragDrop").innerHTML += "<br>Erreur : le type du fichier " + imagePaths[i] + " n'est pas supporté.<br>";
+                imagePaths.splice(i, 1);
+            } else {
+                if (!qualityExtensions.includes(extension) && (imagePaths.length == 1)) { // If it is not JPEG, JPG or PNG
+                    document.getElementById("quality").setAttribute("disabled", "");
+                }
+            }
         }
     }
 }
