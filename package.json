@@ -1,13 +1,13 @@
 {
     "name": "compressor",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Compresseur d'images",
     "main": "index.js",
     "scripts": {
         "start": "electron .",
         "test": "echo \"Error: no test specified\" && exit 1",
         "create-linux-package": "npx electron-packager /media/alexandre/DATA/Documents/Informatique/Apps/Compressor --platform=linux --out=release-builds --overwrite",
-        "create-debian-installer": "electron-installer-debian --src release-builds/Compressor-linux-x64/ --config debian.json --arch amd64",
+        "create-debian-installer": "electron-installer-debian --src release-builds/compressor-linux-x64/ --config debian.json --arch amd64",
         "create-windows-package": "npx electron-packager /media/alexandre/DATA/Documents/Informatique/Apps/Compressor --platform=win32 --arch=x64 --out=release-builds --overwrite",
         "create-windows-installer": "electron-installer-windows --src release-builds/Compressor-win32-x64/ --dest release-builds/"
     },
