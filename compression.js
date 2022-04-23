@@ -71,6 +71,7 @@ function dropHandler(ev) {
             } else {
                 if (!qualityExtensions.includes(extension) && (imagePaths.length == 1)) { // If it is not JPEG, JPG or PNG
                     document.getElementById("quality").setAttribute("disabled", "");
+                    document.getElementById("qualityText").className += "gray";
                 }
             }
         }
