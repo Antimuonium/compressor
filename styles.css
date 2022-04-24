@@ -28,6 +28,11 @@ h2 {
     padding: 10px 20px;
 }
 
+#dropZoneText {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .my-30 {
     margin-top: 30px;
     margin-bottom: 30px;

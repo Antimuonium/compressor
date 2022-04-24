@@ -36,8 +36,6 @@ function formatNumber(number, decimals = 1) {
 
 // Drag & drop
 function dragOverHandler(ev) {
-    document.getElementById("dropZone").style.backgroundColor = "rgb(230,230,230)";
-
     // Prevent default behavior (Prevent file from being opened)
     ev.preventDefault();
 }
@@ -45,7 +43,9 @@ function dragOverHandler(ev) {
 var imagePaths = [];
 
 function dropHandler(ev) {
+    document.getElementById("dropZone").style.backgroundColor = "rgb(230,230,230)";
     console.log('File(s) dropped');
+    document.getElementById("dropZoneText").innerHTML = ev.dataTransfer.files.length + (ev.dataTransfer.files.length >= 2 ? trad["dropText"][language].replaceAll("(s)", "s") : trad["dropText"][language].replaceAll("(s)", ""));
 
     // Prevent default behavior (Prevent file from being opened)
     ev.preventDefault();
@@ -66,9 +66,8 @@ function dropHandler(ev) {
             extension = extension.toLowerCase();
 
             if (!allowedExtensions.includes(extension)) {
-                document.getElementById("errorDragDrop").innerHTML += "Erreur : le type du fichier " + imagePaths[i] + " n'est pas supporté.<br>";
+                document.getElementById("errorDragDrop").innerHTML += trad["errorDragDropText"][language].replace("%path%", imagePaths[i]);
                 imagePaths.splice(i, 1);
-                console.log(i);
             } else {
                 if (!qualityExtensions.includes(extension) && (imagePaths.length == 1)) { // If it is not JPEG, JPG or PNG
                     document.getElementById("quality").setAttribute("disabled", "");
@@ -156,6 +155,7 @@ function compressImage(e) {
         // Emptying the drag and drop zone
         imagePaths = [];
         document.getElementById("dropZone").style.backgroundColor = "transparent";
+        document.getElementById("dropZoneText").innerHTML = trad["dropZoneText"][language];
     }
 
     run();

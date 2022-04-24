@@ -46,13 +46,24 @@ const trad = {
     creditsText: {
         fr: "Créé par <a href=\"https://www.antimuonium.com\">Antimuonium</a>.<br>Code disponible sur <a href=\"https://github.com/Antimuonium/compressor\">GitHub</a>.",
         en: "Created by <a href=\"https://www.antimuonium.com\">Antimuonium</a>.<br>Code available on <a href=\"https://github.com/Antimuonium/compressor\">GitHub</a>."
+    },
+    dropText: {
+        fr: " fichier(s) déposé(s)",
+        en: " file(s) dropped"
+    },
+    errorDragDropText: {
+        fr: "Erreur : le type du fichier %path% n'est pas supporté.<br>",
+        en: "Error: the type of the file %path% is not supported.<br>"
     }
 };
 
 // When the language is changed
+let language = "fr";
 document.getElementById("lang").addEventListener("change", () => {
-    let language = document.getElementById("lang").value;
+    language = document.getElementById("lang").value;
     for (let att of Object.keys(trad)) {
-        document.getElementById(att).innerHTML = trad[att][language];
+        if (!["dropText", "errorDragDropText"].includes(att)) {
+            document.getElementById(att).innerHTML = trad[att][language];
+        }
     }
 });
