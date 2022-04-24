@@ -61,13 +61,14 @@ function dropHandler(ev) {
         const qualityExtensions = ["jpg", "jpeg", "png"];
         document.getElementById("errorDragDrop").innerHTML = "";
 
-        for (var i = 0; i < imagePaths.length; i++) {
+        for (var i = imagePaths.length - 1; i >= 0; i--) {
             let extension = imagePaths[i].split(".")[imagePaths[i].split(".").length - 1];
             extension = extension.toLowerCase();
 
             if (!allowedExtensions.includes(extension)) {
-                document.getElementById("errorDragDrop").innerHTML += "<br>Erreur : le type du fichier " + imagePaths[i] + " n'est pas supporté.<br>";
+                document.getElementById("errorDragDrop").innerHTML += "Erreur : le type du fichier " + imagePaths[i] + " n'est pas supporté.<br>";
                 imagePaths.splice(i, 1);
+                console.log(i);
             } else {
                 if (!qualityExtensions.includes(extension) && (imagePaths.length == 1)) { // If it is not JPEG, JPG or PNG
                     document.getElementById("quality").setAttribute("disabled", "");
