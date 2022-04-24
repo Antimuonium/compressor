@@ -5,7 +5,7 @@ const { app, BrowserWindow } = require('electron');
  */
 function createMainWindow() {
     const win = new BrowserWindow({
-        icon: "logo.png",
+        icon: "logo_256x256.png",
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
