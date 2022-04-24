@@ -1,11 +1,11 @@
-// Import du package pour gérer facilement les chemins
+// Import of the package to manage paths easily
 const path = require('path');
 
 /**
- * Renvoie un nombre formaté (octets, ko, Mo ...)
+ * Returns a formatted number (octets, ko, Mo ...)
  * @param {Number} bytes 
- * @param {bool} tooltip Afficher ou non une tooltip en HTML
- * @param {Number} decimals Nombre de chiffres après la virgule
+ * @param {bool} tooltip Display of an HTML tooltip or not
+ * @param {Number} decimals Number of decimals
  * @returns {String}
  */
 function formatBytes(bytes, tooltip = true, decimals = 2) {
@@ -22,9 +22,9 @@ function formatBytes(bytes, tooltip = true, decimals = 2) {
 }
 
 /**
- * Return a formatted number (without unit)
+ * Returns a formatted number (without unit)
  * @param {Number} number 
- * @param {Number} decimals Nombre de chiffres après la virgule
+ * @param {Number} decimals Number of decimals
  * @returns {String}
  */
 function formatNumber(number, decimals = 1) {
@@ -83,7 +83,7 @@ function dropHandler(ev) {
 function compressImage(e) {
     e.preventDefault();
 
-    // Import du package pour compresser images
+    // Import of the package to compress images
     const { compress } = require("compress-images/promise");
 
     async function run() {
@@ -103,7 +103,7 @@ function compressImage(e) {
         for (var i = 0; i < imagePaths.length; i++) {
             var imagePath = imagePaths[i];
 
-            // Si on glisse-dépose et que le terminal ajoute des guillemets
+            // If we drag and drop and that the terminal adds quotation marks
             if (imagePath.startsWith("'")) {
                 imagePath = imagePath.substring(1, imagePath.length - 1);
             }
@@ -117,7 +117,7 @@ function compressImage(e) {
 
             imagePath = imagePath.replaceAll(path.sep, "/"); // surtout pour Windows afin que la fonction compress s'exécute correctement
 
-            // Fonction de compression - voir https://www.npmjs.com/package/compress-images
+            // Compression function - see https://www.npmjs.com/package/compress-images
             await compress({
                 source: imagePath,
                 destination: outputPathFolder,
@@ -131,7 +131,7 @@ function compressImage(e) {
                 var errors = results.errors;
                 var statistics = results.statistics;
 
-                // Récupération des statistiques de la compression
+                // Gathering of compression statistics
                 algorithms.push(statistics[0].algorithm);
                 inputPaths.push(statistics[0].input);
                 outputPaths.push(statistics[0].path_out_new);
@@ -141,7 +141,7 @@ function compressImage(e) {
             });
         }
 
-        // Ajout des informations dans l'HTML
+        // Adding information in HTML
         document.getElementById("numberFile").innerHTML = numberFile;
         document.getElementById("algorithm").innerHTML = [...new Set(algorithms)].join(", ");
         document.getElementById("inputPath").innerHTML = (numberFile >= 2 ? "<br>" : "") + inputPaths.join("<br>");
@@ -153,7 +153,7 @@ function compressImage(e) {
         document.getElementById("percentSizeReduction").className = "important";
         document.getElementById("percentSizeReduction").innerHTML = formatNumber(Math.abs((outputSizes.reduce((partialSum, a) => partialSum + a, 0) - inputSizes.reduce((partialSum, a) => partialSum + a, 0)) / inputSizes.reduce((partialSum, a) => partialSum + a, 0)) * 100, 2) + " %";
 
-        // Vidage de la zone de drag & drop
+        // Emptying the drag and drop zone
         imagePaths = [];
         document.getElementById("dropZone").style.backgroundColor = "transparent";
     }
